@@ -1,6 +1,6 @@
 ![depot](https://github.com/andromia/solverstack-depot/workflows/depot/badge.svg)
 
-# solverstack-vrp-origin
+# solverstack-depot
 Service for depot module.
 
 ## input
