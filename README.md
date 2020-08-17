@@ -1,7 +1,7 @@
-![vrp-origin](https://github.com/andromia/solverstack-vrp-origin/workflows/vrp-origin/badge.svg)
+![depot](https://github.com/andromia/solverstack-depot/workflows/depot/badge.svg)
 
 # solverstack-vrp-origin
-[Under Development] Origin location selection service for vrp.
+Service for depot module.
 
 ## input
 
