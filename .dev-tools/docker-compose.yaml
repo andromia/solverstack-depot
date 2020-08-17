@@ -1,9 +1,9 @@
 version: "3"
 
 services:
-    flask_vrp_origin_dev:
-        image: flask_vrp_origin_dev:1.00
-        container_name: flask_vrp_origin_dev
+    flask_depot_dev:
+        image: flask_depot_dev:1.00
+        container_name: flask_depot_dev
         restart: unless-stopped
         command: manage.py runserver --host=0.0.0.0 --port=5003
         build:
