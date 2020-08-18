@@ -15,16 +15,18 @@ def get_csv():
 
     return df
 
+
 TESTING_CSV_DF = get_csv()
 
 DATA = [
     {
         "latitude": TESTING_CSV_DF.latitude.iloc[i],
-        "longitude": TESTING_CSV_DF.longitude.iloc[i]
-    } for i in range(len(TESTING_CSV_DF))
+        "longitude": TESTING_CSV_DF.longitude.iloc[i],
+    }
+    for i in range(len(TESTING_CSV_DF))
 ]
 
-REQUEST_TYPES= [
+REQUEST_TYPES = [
     "audio/aac",
     "application/x-abiword",
     "application/x-freearc",

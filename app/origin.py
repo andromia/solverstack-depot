@@ -9,7 +9,7 @@ class KMeans:
     @staticmethod
     def get_dist(a, b, axis=1):
 
-        return np.linalg.norm(a-b, axis=axis)
+        return np.linalg.norm(a - b, axis=axis)
 
     def fit(self, x, y):
         self.x = x
@@ -43,17 +43,16 @@ class KMeans:
             self.old_centroids = deepcopy(self.centroids)
 
             for i in range(self.k):
-                points = \
-                    [X[j] for j in range(len(X)) if self.clusters[j] == i]
+                points = [X[j] for j in range(len(X)) if self.clusters[j] == i]
                 self.centroids[i] = np.mean(points, axis=0)
 
-            self.delta = \
-                self.get_dist(self.centroids, self.old_centroids, None)
+            self.delta = self.get_dist(self.centroids, self.old_centroids, None)
 
             if np.isnan(self.delta):
                 break
 
             run += 1
+
 
 def create_origin(lats: list, lons: list):
     """
@@ -70,15 +69,14 @@ def create_origin(lats: list, lons: list):
     x = np.array(lats, dtype=float) + 90
     y = np.array(lons, dtype=float) + 180
 
-    k = 1 # desired n locations solution
+    k = 1  # desired n locations solution
     kmeans = KMeans(k)
     kmeans.fit(x, y)
     kmeans.predict()
 
     origin = {
         "latitude": kmeans.centroids[0][0] - 90,
-        "longitude": kmeans.centroids[0][1] - 180
+        "longitude": kmeans.centroids[0][1] - 180,
     }
-    
-    return origin
 
+    return origin

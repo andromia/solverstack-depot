@@ -17,20 +17,21 @@ class TestConfig(Config):
 @pytest.fixture
 def client():
     yield create_app(TestConfig).test_client()
-    
+
 
 def test_main_procedure(client):
     input_data = common.DATA
-    logging.debug(f'input data : {input_data}')
+    logging.debug(f"input data : {input_data}")
 
-    endpoint = f'/api/{__version__}/origin'
-    logging.debug(f'endpoint: {endpoint}')
+    endpoint = f"/api/{__version__}/origin"
+    logging.debug(f"endpoint: {endpoint}")
 
     response = client.post(endpoint, json=input_data)
     output = json.loads(response.get_data())
 
     assert len(output) == 2
     assert all(ele in ["latitude", "longitude"] for ele in output)
+
 
 def test_geocode():
     lats = common.TESTING_CSV_DF.latitude.tolist()
