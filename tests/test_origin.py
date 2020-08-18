@@ -33,7 +33,7 @@ def test_main_procedure(client):
     assert all(ele in ["latitude", "longitude"] for ele in output)
 
 
-def test_geocode():
+def test_create_origin():
     lats = common.TESTING_CSV_DF.latitude.tolist()
     lons = common.TESTING_CSV_DF.longitude.tolist()
 
