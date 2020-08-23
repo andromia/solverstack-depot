@@ -1,5 +1,5 @@
 from . import common
-from app import origin, create_app
+from app import create_app, depot
 from app import __version__
 
 from config import Config
@@ -23,7 +23,7 @@ def test_main_procedure(client):
     input_data = common.DATA
     logging.debug(f"input data : {input_data}")
 
-    endpoint = f"/api/{__version__}/origin"
+    endpoint = f"/api/{__version__}/depot"
     logging.debug(f"endpoint: {endpoint}")
 
     response = client.post(endpoint, json=input_data)
@@ -33,8 +33,8 @@ def test_main_procedure(client):
     assert all(ele in ["latitude", "longitude"] for ele in output)
 
 
-def test_create_origin():
+def test_create_depot():
     lats = common.TESTING_CSV_DF.latitude.tolist()
     lons = common.TESTING_CSV_DF.longitude.tolist()
 
-    assert origin.create_origin(lats, lons)
+    assert depot.create_origin(lats, lons)

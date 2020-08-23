@@ -4,13 +4,13 @@ from numpy import zeros
 
 from flask import jsonify, make_response, request
 
-from app import origin
+from app import depot
 
 from . import bp
 
 
-@bp.route("/origin", methods=["POST"])
-def origin_procedure():
+@bp.route("/depot", methods=["POST"])
+def depot_procedure():
     """
     Main RPC endpoint for passing input data for origin output.
 
@@ -28,6 +28,6 @@ def origin_procedure():
         lats[i] = row["latitude"]
         lons[i] = row["longitude"]
 
-    response = origin.create_origin(lats, lons)
+    response = depot.create_origin(lats, lons)
 
     return jsonify(response)
