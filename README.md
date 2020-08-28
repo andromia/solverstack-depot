@@ -6,16 +6,26 @@ Service for depot module.
 ## input
 
 ```
-[
-    { "latitude": float, "longitude": float }
-]
+{
+    "stack_id": integer,
+    "nodes": [
+        { "latitude": float, "longitude": float }
+    ]
+}
 ```
 
 ## output
+_NOTE_: no id will return if auth is not valid (no CRUD)
 
 ```
-{ 
-    "latitude": float, 
-    "longitude": float 
+{
+    "stack_id": integer,
+    "depots": [
+        {   
+            "id": integer,
+            "latitude": float, 
+            "longitude": float 
+        }
+    ]
 }
 ```
