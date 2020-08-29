@@ -1,4 +1,10 @@
-REQUEST_TYPES = [
+from app import __version__
+
+from typing import List
+
+
+ENDPOINT: str = f"/api/{__version__}/depot"
+REQUEST_TYPES: List[str] = [
     "audio/aac",
     "application/x-abiword",
     "application/x-freearc",

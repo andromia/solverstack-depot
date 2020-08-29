@@ -1,12 +1,10 @@
+from . import bp
+from app import depot
 from json import loads
 from typing import List
 from numpy import zeros
 from flask import jsonify, make_response, request
 import requests
-
-from app import depot
-
-from . import bp
 
 
 CRUD_URL: str = "http://localhost:5006/api/v0.1/depot"
@@ -19,21 +17,19 @@ def depot_procedure():
 
     :latitude:      str of destination latitudes
     :longitude:     str of destination longitudes
-
-    :return:        dict { "latitude": float, "longitude": float }        
     """
-    body = loads(request.data)
-    stack_id = body["stack_id"]
-    nodes = body["nodes"]
+    body: dict = loads(request.data)
+    stack_id: int = body["stack_id"]
+    nodes: list = body["nodes"]
 
-    lats = zeros(len(nodes))
-    lons = zeros(len(nodes))
+    lats: list = zeros(len(nodes))
+    lons: list = zeros(len(nodes))
 
     for i, row in enumerate(nodes):
-        lats[i] = row["latitude"]
-        lons[i] = row["longitude"]
+        lats[i]: float = row["latitude"]
+        lons[i]: float = row["longitude"]
 
-    results = depot.create_origin(lats, lons)
+    results: dict = depot.create_origin(lats, lons)
 
     try:
         response = requests.post(
