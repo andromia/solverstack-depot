@@ -7,7 +7,7 @@ from flask import jsonify, make_response, request
 import requests
 
 
-CRUD_URL: str = "http://localhost:5006/api/v0.1/depot"
+CRUD_URL: str = "http://localhost:5004/api/v0.1/depot"
 
 
 @bp.route("/depot", methods=["POST"])
@@ -32,6 +32,10 @@ def depot_procedure():
     results: dict = depot.create_origin(lats, lons)
 
     try:
+        
+        if not request.headers.get("Authorization"):
+            raise ValueError("Unauthorized request")
+
         response = requests.post(
             CRUD_URL,
             headers=request.headers,

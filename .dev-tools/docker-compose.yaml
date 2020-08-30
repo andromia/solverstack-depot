@@ -5,11 +5,11 @@ services:
         image: flask_depot_dev:1.00
         container_name: flask_depot_dev
         restart: unless-stopped
-        command: manage.py runserver --host=0.0.0.0 --port=5003
+        command: manage.py runserver --host=0.0.0.0 --port=5002
         build:
             context: ../
             dockerfile: .dev-tools/Dockerfile
         ports:
-            - "5003:5003"
+            - "5002:5002"
         volumes:
             - ..:/usr/app
